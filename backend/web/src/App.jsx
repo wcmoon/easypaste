@@ -168,8 +168,13 @@ function App() {
 
       <footer>
         <div className="footer-links">
-          <a href="/downloads/easypaste-macos" download className="download-cli">
-            Download CLI Tool (macOS)
+          <a 
+            href="https://github.com/wcmoon/easypaste/tree/main/easypaste-cli" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="download-cli"
+          >
+            Download CLI Tool
           </a>
           <span className="separator">•</span>
           <span>Data stored for 24 hours</span>
