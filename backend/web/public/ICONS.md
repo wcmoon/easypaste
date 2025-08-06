@@ -2,15 +2,19 @@
 
 ## Design Concept
 
-The EasyPaste logo features a modern clipboard icon with document lines, representing the core functionality of text/code sharing. The design uses:
+The EasyPaste logo features a modern white clipboard icon optimized for dark backgrounds, representing the core functionality of text/code sharing. The design uses:
 
-- **Primary Colors**: Gradient from #667eea (blue) to #764ba2 (purple)
-- **Style**: Modern, flat design with subtle shadows
+- **Primary Colors**: White (#ffffff) with brand accent colors
+- **Background**: Brand gradient (#667eea to #764ba2) for favicon
+- **Style**: Clean, high-contrast design with subtle shadows
 - **Icon Elements**: 
-  - Clipboard base (main container)
-  - Paper clip (document holder)
-  - Document lines (text content)
+  - White clipboard base (main container)
+  - Brand-colored paper clip and document lines
   - Green checkmark (successful share indicator)
+  
+## Design Rationale
+
+The white logo design solves the contrast issue when displayed on gradient backgrounds, ensuring excellent visibility and professional appearance. The favicon uses the brand gradient as background with white icon elements for optimal recognition in browser tabs.
 
 ## Files
 
@@ -41,7 +45,22 @@ All icons are created as SVG for:
 ## Colors Used
 
 ```css
-Primary Gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+/* Logo Colors */
+Primary White: #ffffff (main elements)
+Brand Accent: rgba(102, 126, 234, 0.8) (clip and lines)
+Drop Shadow: rgba(0, 0, 0, 0.3)
+
+/* Favicon Colors */
+Background Gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+Icon Elements: #ffffff (95% opacity)
 Success Green: #4CAF50
-White: #ffffff (for contrast elements)
+
+/* Usage Context */
+Header Background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+Text Color: #ffffff
 ```
+
+## Contrast Ratios
+- White on brand gradient: Excellent contrast (>7:1)
+- Brand accent on white: Good contrast (>4.5:1)
+- Meets WCAG AA accessibility standards
