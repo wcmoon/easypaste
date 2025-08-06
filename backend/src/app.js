@@ -12,8 +12,23 @@ const app = express();
 
 app.use(helmet());
 app.use(compression());
+const corsOrigins = process.env.CORS_ORIGIN 
+  ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
+  : '*';
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: (origin, callback) => {
+    // Allow CLI tools and server-to-server requests (no origin header)
+    if (!origin) return callback(null, true);
+    
+    // Allow configured origins
+    if (corsOrigins === '*' || corsOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    // Reject other origins
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 app.use(bodyParser.json({ limit: '10mb' }));

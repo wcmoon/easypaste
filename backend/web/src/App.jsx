@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import QRCode from 'qrcode';
 import './App.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://easypaste.xyz/api';
 
 function App() {
   const [content, setContent] = useState('');
@@ -31,7 +31,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!content.trim()) {
       setError('Please enter some content to share');
       return;
@@ -139,7 +139,7 @@ function App() {
         ) : (
           <div className="result">
             <h2>Share Link Created!</h2>
-            
+
             <div className="share-link-container">
               <input
                 type="text"

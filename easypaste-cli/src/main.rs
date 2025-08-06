@@ -24,7 +24,7 @@ struct Cli {
     #[arg(short, long, help = "Open editor to compose content")]
     editor: bool,
 
-    #[arg(long, default_value = "http://127.0.0.1:3000", help = "API server URL")]
+    #[arg(long, default_value = "https://easypaste.xyz", help = "API server URL")]
     server: String,
 
     #[arg(long, help = "Don't show QR code for the share link")]
