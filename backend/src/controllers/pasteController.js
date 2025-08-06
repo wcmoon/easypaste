@@ -1,8 +1,5 @@
 const Paste = require('../models/Paste');
 const { generateCode, isValidCustomCode } = require('../utils/codeGenerator');
-const { getRedisClient } = require('../config/database');
-
-const CACHE_TTL = 3600;
 
 const createPaste = async (req, res) => {
   try {
@@ -41,14 +38,6 @@ const createPaste = async (req, res) => {
 
     await paste.save();
 
-    const redisClient = getRedisClient();
-    if (redisClient) {
-      await redisClient.setEx(`paste:${code}`, CACHE_TTL, JSON.stringify({
-        content,
-        createdAt: paste.createdAt
-      }));
-    }
-
     res.status(201).json({
       code,
       url: `https://easypaste.xyz/${code}`,
@@ -64,15 +53,6 @@ const getPaste = async (req, res) => {
   try {
     const { code } = req.params;
 
-    const redisClient = getRedisClient();
-    if (redisClient) {
-      const cached = await redisClient.get(`paste:${code}`);
-      if (cached) {
-        const data = JSON.parse(cached);
-        return res.json(data);
-      }
-    }
-
     const paste = await Paste.findOne({ code });
     
     if (!paste) {
@@ -83,10 +63,6 @@ const getPaste = async (req, res) => {
       content: paste.content,
       createdAt: paste.createdAt
     };
-
-    if (redisClient) {
-      await redisClient.setEx(`paste:${code}`, CACHE_TTL, JSON.stringify(response));
-    }
 
     res.json(response);
   } catch (error) {

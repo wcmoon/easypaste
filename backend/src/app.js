@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const bodyParser = require('body-parser');
-const { connectMongoDB, connectRedis } = require('./config/database');
+const { connectMongoDB } = require('./config/database');
 const pasteRoutes = require('./routes/pasteRoutes');
 const viewRoutes = require('./routes/viewRoutes');
 
@@ -47,7 +47,6 @@ const PORT = process.env.PORT || 3000;
 const startServer = async () => {
   try {
     await connectMongoDB();
-    await connectRedis();
     
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
