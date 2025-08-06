@@ -30,9 +30,14 @@ header {
   text-align: center;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
+.logo-container {
+  margin-bottom: 12px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 header p {
@@ -216,8 +221,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-  header h1 {
-    font-size: 2rem;
+  .logo {
+    height: 50px;
   }
   
   .container {
@@ -226,6 +231,10 @@ footer {
   }
   
   main {
+    padding: 20px;
+  }
+  
+  header {
     padding: 20px;
   }
 }

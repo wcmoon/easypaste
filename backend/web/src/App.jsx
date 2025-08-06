@@ -90,7 +90,9 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>EasyPaste</h1>
+        <div className="logo-container">
+          <img src="/logo.svg" alt="EasyPaste" className="logo" />
+        </div>
         <p>Share text and code instantly</p>
       </header>
 
